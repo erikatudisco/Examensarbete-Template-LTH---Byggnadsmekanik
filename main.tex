@@ -24,8 +24,19 @@
 \setcounter{tocdepth}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{tocloft} %Control the ToC formatting
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
+
+%Formatting of page numbering (Comment to have the number centered)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[RO,LE]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[hang, font=small, labelfont=bf]{caption}
 \usepackage{subcaption}
@@ -34,12 +45,21 @@
               format = hang}
 
 \usepackage[
-backend=bibtex,
-style=authoryear,
-citestyle=authoryear-comp,
-maxcitenames=2,maxbibnames=99,natbib]
+  backend=bibtex,
+  %%%%% For NameYear citation
+  %   style=authoryear,
+  %   citestyle=authoryear-comp,
+  %   sorting=nyt
+  %%%%%
+  %%%%% For Number citation
+  style=numeric,
+  citestyle=numeric,
+  sorting=none,
+  %%%%%
+  maxcitenames=2,maxbibnames=99,
+  natbib]
 {biblatex}
-\addbibresource{references.bib}
+\addbibresource{References.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT NEED TO CHANGE BEFORE THIS POINT %
@@ -81,10 +101,11 @@ maxcitenames=2,maxbibnames=99,natbib]
 \include{Acknowledgements}
 \include{Notations_and_Symbols}
 
+\cleardoublepage
 \tableofcontents
 \addcontentsline{toc}{chapter}{Table of Contents}
 
-\clearpage
+\cleardoublepage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
